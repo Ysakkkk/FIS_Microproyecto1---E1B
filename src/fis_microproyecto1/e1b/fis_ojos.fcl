@@ -21,10 +21,10 @@ FUZZIFY agudeza_visual
 END_FUZZIFY
 
 FUZZIFY refraccion
-    TERM baja := trape -10 -10 -7 -6;
-    TERM alta := trian -7 -5 -4.5;
+    TERM baja := trape -3 -1 -0.25 -0.25;
     TERM media := trian -5 -3 -2.5;
-    TERM muy_alta := trape -3 -1 -0.25 -0.25;
+    TERM alta := trian -7 -5 -4.5;
+    TERM muy_alta := trape -10 -10 -7 -6;
 END_FUZZIFY
 
 FUZZIFY fatiga_ocular

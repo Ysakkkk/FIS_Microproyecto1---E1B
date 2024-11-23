@@ -26,7 +26,7 @@ public class FIS_Microproyecto1E1B {
                 case 1:
                     System.out.println("\nIngrese el nivel de Agudeza Visual en dioptrias (0.2 ~ 10)");
                     double agudeza_visual = scanner.nextDouble();
-                    System.out.println("Ingrese el nivel de refracción (-10 ~ -0.25)");
+                    System.out.println("Ingrese el nivel de refraccion (-10 ~ -0.25)");
                     double refraccion = scanner.nextDouble();
                     System.out.println("Ingrese la fatiga ocular que siente en un rango de (0 ~ 10)");
                     double fatiga_ocular = scanner.nextDouble();
