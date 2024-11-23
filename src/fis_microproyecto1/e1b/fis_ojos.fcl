@@ -73,22 +73,53 @@ RULEBLOCK No1
     ACT : MIN;
     ACCU : MAX;
 
-    RULE 1 : IF (agudeza_visual IS buena) AND (refraccion IS baja) AND (Tos IS Muy_baja) AND (Dificultad_respirar IS Muy_baja) THEN Tuberculosis IS Baja, Diabetes IS Baja, Asma IS Baja, Anemia IS Baja;
-    RULE 2 : IF (Nivel_glucosa IS Muy_baja) AND (Imc IS Bajo) AND (Debilidad IS Muy_baja) THEN Tuberculosis IS Baja, Diabetes IS Baja, Asma IS Baja, Anemia IS Baja;              
-    RULE 3 : IF (Tos IS Muy_baja) AND (Dificultad_respirar IS Muy_baja) AND (Debilidad IS Muy_baja) THEN Tuberculosis IS Baja, Diabetes IS Baja, Asma IS Baja, Anemia IS Baja;            
-    RULE 4 : IF (Frecuencia_cardiaca IS Muy_baja) AND (Imc IS Bajo) AND (Debilidad IS Muy_baja) THEN Tuberculosis IS Baja, Diabetes is Baja, Asma is Baja, Anemia is Baja;             
-    RULE 5 : IF (Temperatura IS Hipertermia) AND (Imc IS Muy_alto) AND (Tos IS Alta) AND (Debilidad IS Alta) THEN Tuberculosis IS Muy_alta, Diabetes IS Media, Asma IS Media, Anemia IS Media;
-    RULE 6 : IF (Nivel_glucosa IS Muy_alta) AND (Imc IS Muy_alto) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Muy_alta, Asma IS Baja, Anemia IS Media;                 
-    RULE 7 : IF (Tos IS Alta) AND (Dificultad_respirar IS Alta) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Baja, Asma IS Muy_alta, Anemia IS Baja;                  
-    RULE 8 : IF (Frecuencia_cardiaca IS Alta) AND (Imc IS Muy_alto) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Alta, Asma IS Baja, Anemia IS Muy_alta;                  
-    RULE 9 : IF (Temperatura IS Fiebre_alta) AND (Imc IS Alta) AND (Tos IS Media) AND (Debilidad IS Media) THEN Tuberculosis IS Alta, Diabetes IS Media, Asma IS Media, Anemia IS Media;   
-    RULE 10 : IF (Nivel_glucosa IS Alta) AND (Imc IS Alta) AND (Debilidad IS Media) THEN Tuberculosis IS Media, Diabetes IS Alta, Asma IS Baja, Anemia IS Media;                       
-    RULE 11 : IF (Tos IS Media) AND (Dificultad_respirar IS Media) AND (Debilidad IS Media) THEN Tuberculosis IS Media, Diabetes IS Baja, Asma IS Alta, Anemia IS Baja;                       
-    RULE 12 : IF (Frecuencia_cardiaca IS Muy_alta) AND (Imc IS Alta) AND (Debilidad IS Media) THEN Tuberculosis IS Media, Diabetes IS Media, Asma IS Baja, Anemia IS Alta;                 
-    RULE 13 : IF (Temperatura IS Hipotermia) AND (Imc IS Muy_alto) AND (Tos IS Muy_baja) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Alta, Asma IS Baja, Anemia IS Alta; 
-    RULE 14 : IF (Nivel_glucosa IS Muy_alta) AND (Imc IS Bajo) AND (Debilidad IS Alta) THEN Tuberculosis IS Baja, Diabetes IS Alta, Asma IS Baja, Anemia IS Media;                         
-    RULE 15 : IF (Tos IS Alta) AND (Dificultad_respirar IS Muy_baja) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Baja, Asma IS Alta, Anemia IS Baja;                   
+    // Reglas para Astigmatismo
+    RULE 1 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS alta OR fatiga_ocular IS intensa) 
+            THEN astigmatismo IS alta WITH 1.0;        
+    RULE 2 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (dolor_ocular IS moderado OR dolor_ocular IS intenso) 
+            THEN astigmatismo IS moderada WITH 0.8;
+    RULE 3 : IF (agudeza_visual IS regular) AND (refraccion IS media) AND (fatiga_ocular IS moderada) 
+            THEN astigmatismo IS leve WITH 0.7;
+    
+    // Reglas para Miopía
+    RULE 4 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS intensa) AND (dolor_ocular IS intenso) 
+            THEN miopia IS alta WITH 1.0;
+    RULE 5 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (fatiga_ocular IS moderada) 
+            THEN miopia IS moderada WITH 0.8;
+    RULE 6 : IF (agudeza_visual IS regular) AND (refraccion IS media) AND (fatiga_ocular IS leve) 
+            THEN miopia IS leve WITH 0.7;
+    RULE 7 : IF (agudeza_visual IS buena) AND (refraccion IS baja) AND (fatiga_ocular IS nula) AND (dolor_ocular IS nulo) 
+            THEN miopia IS nula WITH 1.0;
+
+    // Reglas para Hipermetropía
+    RULE 8 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS intensa) AND (dolor_ocular IS intenso) 
+            THEN hipermetropia IS alta WITH 0.9;
+    RULE 9 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (fatiga_ocular IS alta) 
+            THEN hipermetropia IS moderada WITH 0.8;
+    RULE 10 : IF (agudeza_visual IS regular) AND (refraccion IS media) AND (fatiga_ocular IS moderada) 
+            THEN hipermetropia IS leve WITH 0.7;
+    RULE 11 : IF (agudeza_visual IS buena) AND (refraccion IS baja) AND (fatiga_ocular IS nula) AND (dolor_ocular IS nulo) 
+            THEN hipermetropia IS nula WITH 1.0;
+
+    // Reglas para condiciones combinadas
+    RULE 12 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS intensa) 
+            THEN (astigmatismo IS alta) AND (miopia IS alta) WITH 0.9;
+    RULE 13 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (dolor_ocular IS intenso) 
+            THEN (astigmatismo IS moderada) AND (hipermetropia IS moderada) WITH 0.8;
+
+    // Reglas específicas para síntomas característicos
+    RULE 14 : IF (fatiga_ocular IS intensa) AND (dolor_ocular IS intenso) 
+            THEN (astigmatismo IS alta) OR (miopia IS alta) WITH 0.7;
+    RULE 15 : IF (agudeza_visual IS muy_pobre) AND (dolor_ocular IS intenso) 
+            THEN (hipermetropia IS alta) OR (miopia IS alta) WITH 0.7;
+
+    // Reglas de exclusión
+    RULE 16 : IF (agudeza_visual IS buena) AND (fatiga_ocular IS nula) AND (dolor_ocular IS nulo) 
+            THEN (astigmatismo IS nulo) AND (miopia IS nula) AND (hipermetropia IS nula) WITH 1.0;
+    RULE 17 : IF (refraccion IS baja) AND (agudeza_visual IS buena) 
+            THEN (astigmatismo IS nulo) AND (miopia IS nula) WITH 0.9;
 
 END_RULEBLOCK
+
 
 END_FUNCTION_BLOCK
