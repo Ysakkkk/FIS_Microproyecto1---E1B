@@ -1,0 +1,94 @@
+FUNCTION_BLOCK fis_ojos
+VAR_INPUT
+    agudeza_visual : REAL; RANGE := (0.2 .. 10);
+    refraccion : REAL; RANGE := (-10 .. -0.25);
+    fatiga_ocular : REAL; RANGE := (0 .. 10);
+    dolor_ocular : REAL; RANGE := (0 .. 10);
+END_VAR
+
+VAR_OUTPUT
+    astigmatismo : REAL; RANGE := (0 .. 6);
+    miopia : REAL; RANGE := (0 .. 9);
+    hipermetropia : REAL; RANGE := (0 .. 8);
+END_VAR
+
+FUZZIFY agudeza_visual
+    TERM muy_pobre := trape 0.2 0.2 0.5 2;
+    TERM regular := trian 1 3 6;
+    TERM pobre := trian 5 6.5 8;
+    TERM buena := trape 7 9 10 10;
+END_FUZZIFY
+
+FUZZIFY refraccion
+    TERM baja := trape -10 -10 -7 -6;
+    TERM alta := trian -7 -5 -4.5;
+    TERM media := trian -5 -3 -2.5;
+    TERM muy_alta := trape -3 -1 -0.25 -0.25;
+END_FUZZIFY
+
+FUZZIFY fatiga_ocular
+    TERM nula := trian 0 0 2;
+    TERM leve := trian 1 2 4;
+    TERM moderada := trian 3 4 6;
+    TERM alta := trian 5 6 8;
+    TERM intensa := trian 7 10 10;
+END_FUZZIFY
+
+FUZZIFY dolor_ocular
+    TERM nulo := trian 0 0 2;
+    TERM leve := trian 1.5 4 5;
+    TERM moderado := trian 4.5 6 7;
+    TERM intenso := trian 6.5 8 10;
+END_FUZZIFY
+
+DEFUZZIFY astigmatismo
+    TERM nulo := trape 0 0 0 0.35;
+    TERM leve := trian 0.25 0.725 1.2;
+    TERM moderada := trian 0.75 2 3.5;
+    TERM alta := trape 3 5 6 6;
+    METHOD : COG;
+    DEFAULT := 0;
+END_DEFUZZIFY
+
+DEFUZZIFY miopia
+    TERM nula := trape 0 0 0.5 1;
+    TERM leve := trian 0.25 1.7 3;
+    TERM moderada := trian 2.75 4 6;
+    TERM alta := trape 5 8 9 9;
+    METHOD : COG;
+    DEFAULT := 0;
+END_DEFUZZIFY
+
+DEFUZZIFY hipermetropia
+    TERM nula := trape 0 0 0.7 1.5;
+    TERM leve := trian 0.5 1.5 2.5;
+    TERM moderada := trian 1.5 3 5;
+    TERM alta := trape 4 7 8 8;
+    METHOD : COG;
+    DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+    AND : MIN;
+    ACT : MIN;
+    ACCU : MAX;
+
+    RULE 1 : IF (agudeza_visual IS buena) AND (refraccion IS baja) AND (Tos IS Muy_baja) AND (Dificultad_respirar IS Muy_baja) THEN Tuberculosis IS Baja, Diabetes IS Baja, Asma IS Baja, Anemia IS Baja;
+    RULE 2 : IF (Nivel_glucosa IS Muy_baja) AND (Imc IS Bajo) AND (Debilidad IS Muy_baja) THEN Tuberculosis IS Baja, Diabetes IS Baja, Asma IS Baja, Anemia IS Baja;              
+    RULE 3 : IF (Tos IS Muy_baja) AND (Dificultad_respirar IS Muy_baja) AND (Debilidad IS Muy_baja) THEN Tuberculosis IS Baja, Diabetes IS Baja, Asma IS Baja, Anemia IS Baja;            
+    RULE 4 : IF (Frecuencia_cardiaca IS Muy_baja) AND (Imc IS Bajo) AND (Debilidad IS Muy_baja) THEN Tuberculosis IS Baja, Diabetes is Baja, Asma is Baja, Anemia is Baja;             
+    RULE 5 : IF (Temperatura IS Hipertermia) AND (Imc IS Muy_alto) AND (Tos IS Alta) AND (Debilidad IS Alta) THEN Tuberculosis IS Muy_alta, Diabetes IS Media, Asma IS Media, Anemia IS Media;
+    RULE 6 : IF (Nivel_glucosa IS Muy_alta) AND (Imc IS Muy_alto) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Muy_alta, Asma IS Baja, Anemia IS Media;                 
+    RULE 7 : IF (Tos IS Alta) AND (Dificultad_respirar IS Alta) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Baja, Asma IS Muy_alta, Anemia IS Baja;                  
+    RULE 8 : IF (Frecuencia_cardiaca IS Alta) AND (Imc IS Muy_alto) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Alta, Asma IS Baja, Anemia IS Muy_alta;                  
+    RULE 9 : IF (Temperatura IS Fiebre_alta) AND (Imc IS Alta) AND (Tos IS Media) AND (Debilidad IS Media) THEN Tuberculosis IS Alta, Diabetes IS Media, Asma IS Media, Anemia IS Media;   
+    RULE 10 : IF (Nivel_glucosa IS Alta) AND (Imc IS Alta) AND (Debilidad IS Media) THEN Tuberculosis IS Media, Diabetes IS Alta, Asma IS Baja, Anemia IS Media;                       
+    RULE 11 : IF (Tos IS Media) AND (Dificultad_respirar IS Media) AND (Debilidad IS Media) THEN Tuberculosis IS Media, Diabetes IS Baja, Asma IS Alta, Anemia IS Baja;                       
+    RULE 12 : IF (Frecuencia_cardiaca IS Muy_alta) AND (Imc IS Alta) AND (Debilidad IS Media) THEN Tuberculosis IS Media, Diabetes IS Media, Asma IS Baja, Anemia IS Alta;                 
+    RULE 13 : IF (Temperatura IS Hipotermia) AND (Imc IS Muy_alto) AND (Tos IS Muy_baja) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Alta, Asma IS Baja, Anemia IS Alta; 
+    RULE 14 : IF (Nivel_glucosa IS Muy_alta) AND (Imc IS Bajo) AND (Debilidad IS Alta) THEN Tuberculosis IS Baja, Diabetes IS Alta, Asma IS Baja, Anemia IS Media;                         
+    RULE 15 : IF (Tos IS Alta) AND (Dificultad_respirar IS Muy_baja) AND (Debilidad IS Alta) THEN Tuberculosis IS Media, Diabetes IS Baja, Asma IS Alta, Anemia IS Baja;                   
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
