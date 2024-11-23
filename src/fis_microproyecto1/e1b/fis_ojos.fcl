@@ -1,4 +1,5 @@
-FUNCTION_BLOCK fis_ojos
+FUNCTION_BLOCK Ceguera
+
 VAR_INPUT
     agudeza_visual : REAL; RANGE := (0.2 .. 10);
     refraccion : REAL; RANGE := (-10 .. -0.25);
@@ -80,44 +81,40 @@ RULEBLOCK No1
             THEN astigmatismo IS moderada WITH 0.8;
     RULE 3 : IF (agudeza_visual IS regular) AND (refraccion IS media) AND (fatiga_ocular IS moderada) 
             THEN astigmatismo IS leve WITH 0.7;
+    RULE 4 : IF (fatiga_ocular IS intensa) AND (dolor_ocular IS intenso) 
+            THEN astigmatismo IS alta WITH 0.7;
     
     // Reglas para Miopía
-    RULE 4 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS intensa) AND (dolor_ocular IS intenso) 
+    RULE 5 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS intensa) AND (dolor_ocular IS intenso) 
             THEN miopia IS alta WITH 1.0;
-    RULE 5 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (fatiga_ocular IS moderada) 
+    RULE 6 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (fatiga_ocular IS moderada) 
             THEN miopia IS moderada WITH 0.8;
-    RULE 6 : IF (agudeza_visual IS regular) AND (refraccion IS media) AND (fatiga_ocular IS leve) 
+    RULE 7 : IF (agudeza_visual IS regular) AND (refraccion IS media) AND (fatiga_ocular IS leve) 
             THEN miopia IS leve WITH 0.7;
-    RULE 7 : IF (agudeza_visual IS buena) AND (refraccion IS baja) AND (fatiga_ocular IS nula) AND (dolor_ocular IS nulo) 
+    RULE 8 : IF (agudeza_visual IS buena) AND (refraccion IS baja) AND (fatiga_ocular IS nula) AND (dolor_ocular IS nulo) 
             THEN miopia IS nula WITH 1.0;
 
     // Reglas para Hipermetropía
-    RULE 8 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS intensa) AND (dolor_ocular IS intenso) 
+    RULE 9 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS intensa) AND (dolor_ocular IS intenso) 
             THEN hipermetropia IS alta WITH 0.9;
-    RULE 9 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (fatiga_ocular IS alta) 
+    RULE 10 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (fatiga_ocular IS alta) 
             THEN hipermetropia IS moderada WITH 0.8;
-    RULE 10 : IF (agudeza_visual IS regular) AND (refraccion IS media) AND (fatiga_ocular IS moderada) 
+    RULE 11 : IF (agudeza_visual IS regular) AND (refraccion IS media) AND (fatiga_ocular IS moderada) 
             THEN hipermetropia IS leve WITH 0.7;
-    RULE 11 : IF (agudeza_visual IS buena) AND (refraccion IS baja) AND (fatiga_ocular IS nula) AND (dolor_ocular IS nulo) 
+    RULE 12 : IF (agudeza_visual IS buena) AND (refraccion IS baja) AND (fatiga_ocular IS nula) AND (dolor_ocular IS nulo) 
             THEN hipermetropia IS nula WITH 1.0;
 
     // Reglas para condiciones combinadas
-    RULE 12 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS intensa) 
-            THEN (astigmatismo IS alta) AND (miopia IS alta) WITH 0.9;
-    RULE 13 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (dolor_ocular IS intenso) 
-            THEN (astigmatismo IS moderada) AND (hipermetropia IS moderada) WITH 0.8;
-
-    // Reglas específicas para síntomas característicos
-    RULE 14 : IF (fatiga_ocular IS intensa) AND (dolor_ocular IS intenso) 
-            THEN (astigmatismo IS alta) OR (miopia IS alta) WITH 0.7;
-    RULE 15 : IF (agudeza_visual IS muy_pobre) AND (dolor_ocular IS intenso) 
-            THEN (hipermetropia IS alta) OR (miopia IS alta) WITH 0.7;
-
+    RULE 13 : IF (agudeza_visual IS muy_pobre) AND (refraccion IS muy_alta) AND (fatiga_ocular IS intensa) 
+            THEN astigmatismo IS alta, miopia IS alta WITH 0.9;
+    RULE 14 : IF (agudeza_visual IS pobre) AND (refraccion IS alta) AND (dolor_ocular IS intenso) 
+            THEN astigmatismo IS moderada, hipermetropia IS moderada WITH 0.8;
+ 
     // Reglas de exclusión
-    RULE 16 : IF (agudeza_visual IS buena) AND (fatiga_ocular IS nula) AND (dolor_ocular IS nulo) 
-            THEN (astigmatismo IS nulo) AND (miopia IS nula) AND (hipermetropia IS nula) WITH 1.0;
-    RULE 17 : IF (refraccion IS baja) AND (agudeza_visual IS buena) 
-            THEN (astigmatismo IS nulo) AND (miopia IS nula) WITH 0.9;
+    RULE 15 : IF (agudeza_visual IS buena) AND (fatiga_ocular IS nula) AND (dolor_ocular IS nulo) 
+            THEN astigmatismo IS nulo, miopia IS nula, hipermetropia IS nula WITH 1.0;
+    RULE 16 : IF (refraccion IS baja) AND (agudeza_visual IS buena) 
+            THEN astigmatismo IS nulo, miopia IS nula WITH 0.9;
 
 END_RULEBLOCK
 
