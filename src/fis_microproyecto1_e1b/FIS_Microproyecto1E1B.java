@@ -102,16 +102,15 @@ public class FIS_Microproyecto1E1B {
         // Gráficos
         JFuzzyChart.get().chart(fis.getFunctionBlock("Ceguera"));
         
-        return String.format("""  
-                             
-            Nivel de Astigmatismo: %.2f
+        return String.format("""
+            Nivel de Astigmatismo: -%.2fD
             Categoría: %s (Grado de pertenencia: %.2f)
             
-            Nivel de Miopia: %.1f%%
+            Nivel de Miopia: %.1fD
             Categoria: %s (Grado de pertenencia: %.2f)
-               
-            Nivel de Hipermetropia: %.1f%%
-            Nivel: %s (Grado de pertenencia: %.2f)                     
+            
+            Nivel de Hipermetropia: %.1fD
+            Nivel: %s (Grado de pertenencia: %.2f)
             """, 
             Astigmatismo, AstigmatismoMayor, gradoAstigmatismo, 
             Miopia, MiopiaMayor, gradoMiopia, Hipermetropia, 

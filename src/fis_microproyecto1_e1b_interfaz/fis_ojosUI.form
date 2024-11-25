@@ -33,19 +33,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,54 +57,56 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="404" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                          <Component id="buttonCalcular" min="-2" pref="170" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSeparator1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="eyeImage" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="titleUI" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="eyeImage" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="titleUI" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="refraccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dolorOcular" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="fatigaOcular" min="-2" max="-2" attributes="0"/>
-                                      <Component id="agudezaVisual" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="refraccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="dolorOcular" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="respuestaRefraccion" max="32767" attributes="0"/>
+                                  <Component id="respuestaDolorOcular" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="41" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="agudezaVisual" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="respuestaAgudezaVisual" min="-2" pref="170" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="respuestaRefraccion" max="32767" attributes="0"/>
-                                      <Component id="respuestaAgudezaVisual" max="32767" attributes="0"/>
-                                      <Component id="respuestaFatigaOcular" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="respuestaDolorOcular" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="fatigaOcular" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="respuestaFatigaOcular" min="-2" pref="170" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" pref="701" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="buttonCalcular" min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="714" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="489" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="761" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -127,34 +124,28 @@
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="242" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="158" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="dolorOcular" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="respuestaDolorOcular" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="respuestaFatigaOcular" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fatigaOcular" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="respuestaFatigaOcular" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="refraccion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="respuestaRefraccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="agudezaVisual" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="respuestaAgudezaVisual" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="13" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="buttonCalcular" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="179" max="-2" attributes="0"/>
-                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                  <Component id="buttonCalcular" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="168" max="-2" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -283,7 +274,8 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Consolas" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;   &lt;b&gt;&lt;h3&gt;Instrucciones de uso:&lt;/h3&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;   Ingrese los valores para evaluar el estado visual:&lt;br&gt;   - Dolor Ocular (0.0 - 10.0): Nivel de molestia o dolor en los ojos&lt;br&gt;   -  Fatiga Ocular (0.0 - 10.0): Nivel de cansancio visual tras un esfuerzo prolongado&lt;br&gt;   - Refracci&#xf3;n (-10.00 a -0.25 D): Valor que mide c&#xf3;mo la luz se enfoca en el ojo&lt;br&gt;   - Agudeza Visual (0.2-10): Capacidad para distinguir detalles con claridad&lt;br&gt;&lt;br&gt; &lt;/html&gt; "/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;   &lt;b&gt;&lt;h3&gt;Instrucciones de uso:&lt;/h3&gt;&lt;/b&gt;&lt;br&gt; Ingrese los valores para evaluar el estado visual:&lt;br&gt;   - Dolor Ocular (0.0 - 10.0): Nivel de molestia o dolor en los ojos&lt;br&gt;   -  Fatiga Ocular (0.0 - 10.0): Nivel de cansancio visual tras un esfuerzo prolongado&lt;br&gt;   - Refracci&#xf3;n (-10.00 a -0.25 D): Valor que mide c&#xf3;mo la luz se enfoca en el ojo&lt;br&gt;   - Agudeza Visual (0.2-10): Capacidad para distinguir detalles con claridad&lt;br&gt;&lt;br&gt; &lt;/html&gt; "/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="respuestaFatigaOcular">
