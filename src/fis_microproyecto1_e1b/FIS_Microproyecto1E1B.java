@@ -1,8 +1,7 @@
 package fis_microproyecto1_e1b;
 import net.sourceforge.jFuzzyLogic.FIS;
 import net.sourceforge.jFuzzyLogic.plot.JFuzzyChart;
-//import interfaz.AirQualityUI;
-import java.util.Scanner;
+//import java.util.Scanner;
 import fis_microproyecto1_e1b_interfaz.fis_ojosUI;
 public class FIS_Microproyecto1E1B {
     
@@ -58,7 +57,7 @@ public class FIS_Microproyecto1E1B {
     
     public String evaluarCeguera(double agudeza_visual, double refraccion, double fatiga_ocular, double dolor_ocular) {
         
-        String fileName = "src/fis_microproyecto1/e1b/fis_ojos.fcl";
+        String fileName = "src/fis_microproyecto1_e1b/fis_ojos.fcl";
         FIS fis = FIS.load(fileName, true);
         
         if (fis == null) {
